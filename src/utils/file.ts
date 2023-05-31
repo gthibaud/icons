@@ -1,5 +1,5 @@
 import prettierConfig from '@owlgrid-dev/prettier-config';
-import { exists, existsSync, mkdirSync, removeSync, writeFileSync } from 'fs-extra';
+import { exists, existsSync, mkdirSync, rmSync, writeFileSync } from 'fs-extra';
 import { BuiltInParserName, format, LiteralUnion, Options } from 'prettier';
 
 const getFolder = (path: string): string => {
@@ -71,5 +71,5 @@ const getConfig = (parser?: LiteralUnion<BuiltInParserName, string>) => {
 
 export const cleanPath = async (path: string) => {
     // Delete folder
-    removeSync(path);
+    rmSync(path, { recursive: true, force: true });
 };

@@ -10,7 +10,7 @@ const upperCamelCase = require('uppercamelcase');
  */
 export const generateReactPackage = async (iconsPath: string, packageReactPath: string) => {
     // Clean the package folder
-    cleanPath(packageReactPath);
+    await cleanPath(packageReactPath);
 
     // Extract the icons list from the icons folder
     const icons = await getIconsList(iconsPath);

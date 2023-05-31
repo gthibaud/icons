@@ -23,7 +23,7 @@
         "directory": "/"
     },
     "scripts": {
-        "dev": "tsc && node lib/index.js",
+        "dev": "rm -rf ./lib && tsc && node lib/index.js",
         "start": "node build/index.js",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
         "lint": "tslint -p tsconfig.json",
