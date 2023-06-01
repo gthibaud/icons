@@ -1,8 +1,10 @@
 # Grégoire's icons for React
 
+My favorite icons ready to use in React projects. Typescript ready.
+
 ## Usage
 
-```react
+```TSX
 
 export const App = () => (
     <>
