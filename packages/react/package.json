@@ -1,6 +1,6 @@
 {
     "name": "gthibaud-icons-react",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Grégoire's React icons.",
     "main": "./lib/index.js",
     "repository": "git@github.com:gthibaud/icons.git",
@@ -14,11 +14,11 @@
     },
     "prettier": "@owlgrid-dev/prettier-config",
     "devDependencies": {
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "typescript": "^5.0.4",
+        "@owlgrid-dev/prettier-config": "^0.0.6",
         "@types/node": "^20.2.5",
         "@types/react": "^18.2.7",
-        "@owlgrid-dev/prettier-config": "^0.0.6"
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "typescript": "^5.0.4"
     }
 }

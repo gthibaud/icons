@@ -29,7 +29,7 @@
         "lint": "tslint -p tsconfig.json",
         "build": "rm -rf ./lib && tsc",
         "checkPrepare": "yarn test && yarn format && yarn lint && yarn build",
-        "release": "yarn version --patch && npm publish --tag latest",
+        "release": "yarn dev && cd packages/react && yarn release",
         "releaseMajor": "yarn version --patch --major && npm publish --tag latest",
         "preversion": "yarn format && yarn lint && yarn build",
         "prepare": "husky install"
