@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { IconProps } from './../types';
 
 export const Facebook: FC<IconProps> = ({
-    size = 24,
+    size = '1em',
     width,
     height,
     color,
@@ -14,7 +14,7 @@ export const Facebook: FC<IconProps> = ({
     return (
         <svg
             className={className}
-            style={{ display: 'inline', margin: '0px 3px', ...style }}
+            style={{ display: 'inline', margin: '0px 0.3ch', ...style }}
             aria-label={arialLabel || 'facebook icon'}
             width={width || size}
             height={height || size}
@@ -23,7 +23,7 @@ export const Facebook: FC<IconProps> = ({
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                d="M12 2C6.4775 2 2 6.4775 2 12C2 17.0133 5.69333 21.1533 10.505 21.8767V14.65H8.03083V12.0217H10.505V10.2725C10.505 7.37667 11.9158 6.10583 14.3225 6.10583C15.475 6.10583 16.085 6.19167 16.3733 6.23V8.52417H14.7317C13.71 8.52417 13.3533 9.49333 13.3533 10.585V12.0217H16.3475L15.9417 14.65H13.3533V21.8975C18.2342 21.2358 22 17.0625 22 12C22 6.4775 17.5225 2 12 2Z"
+                d="M12 1.99997C6.4775 1.99997 2 6.47747 2 12C2 17.0133 5.69333 21.1533 10.505 21.8766V14.65H8.03083V12.0216H10.505V10.2725C10.505 7.37664 11.9158 6.1058 14.3225 6.1058C15.475 6.1058 16.085 6.19164 16.3733 6.22997V8.52414H14.7317C13.71 8.52414 13.3533 9.4933 13.3533 10.585V12.0216H16.3475L15.9417 14.65H13.3533V21.8975C18.2342 21.2358 22 17.0625 22 12C22 6.47747 17.5225 1.99997 12 1.99997Z"
                 fill="inherit"
             />
         </svg>

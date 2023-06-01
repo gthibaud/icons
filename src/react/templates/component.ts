@@ -4,7 +4,7 @@ export const generateComponent = (iconName: string, svgSource: string): string =
 import { IconProps } from './../types';
 
 export const ${iconName}: FC<IconProps> = ({
-    size = 24,
+    size = "1em",
     width,
     height,
     color,

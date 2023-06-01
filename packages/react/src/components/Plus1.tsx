@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { IconProps } from './../types';
 
 export const Plus1: FC<IconProps> = ({
-    size = 24,
+    size = '1em',
     width,
     height,
     color,
@@ -14,7 +14,7 @@ export const Plus1: FC<IconProps> = ({
     return (
         <svg
             className={className}
-            style={{ display: 'inline', margin: '0px 3px', ...style }}
+            style={{ display: 'inline', margin: '0px 0.3ch', ...style }}
             aria-label={arialLabel || 'plus-1 icon'}
             width={width || size}
             height={height || size}

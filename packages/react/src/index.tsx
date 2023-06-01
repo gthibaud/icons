@@ -32,6 +32,8 @@ export { Instagram } from './components/Instagram';
 export { Leaf } from './components/Leaf';
 export { Link } from './components/Link';
 export { Linkedin } from './components/Linkedin';
+export { LockDesktop } from './components/LockDesktop';
+export { LockShield } from './components/LockShield';
 export { Megaphone } from './components/Megaphone';
 export { People } from './components/People';
 export { Person } from './components/Person';
