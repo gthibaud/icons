@@ -1,7 +1,12 @@
-import { readdirSync, readFileSync } from 'fs';
+import { existsSync, readdirSync, readFileSync } from 'fs';
 import path from 'path';
-import { cleanPath, exportTsxFile } from '../utils/file';
+import { cleanPath, exportFile, exportTsxFile } from '../utils/file';
 import { generateComponent } from './templates/component';
+import { exists } from 'fs-extra';
+import { generateLicence } from './templates/generateLicence';
+import { generateTypes } from './templates/types';
+import { generateTypescriptConfig } from './templates/typescript';
+import { addPropsToSVG } from './props';
 // tslint:disable-next-line
 const upperCamelCase = require('uppercamelcase');
 
@@ -18,34 +23,47 @@ export const generateReactPackage = async (iconsPath: string, packageReactPath: 
     const componentNames: string[] = [];
 
     // For each icon:
-    await Promise.all(
-        icons.map(async (iconFileName) => {
-            // Get the SVG code as string
-            let iconSVGSource = await getSVGSource(iconsPath, iconFileName);
+    for (const iconFileName of icons) {
+        // Generate the icon component name
+        const iconName = iconFileName.split('.')[0];
+        const componentName = upperCamelCase(iconName);
 
-            // Add props to the SVG code
-            iconSVGSource = iconSVGSource.replace('width="20"', 'width={props.width}');
-            iconSVGSource = iconSVGSource.replace('height="20"', 'width={props.height}');
-            iconSVGSource = iconSVGSource.replace('fill="black"', 'fill={props.color}');
-            iconSVGSource = iconSVGSource.replace('fill="#000000"', 'fill={props.color}');
+        // Get the SVG code as string
+        let iconSVGSource = await getSVGSource(iconsPath, iconFileName);
 
-            // Generate the icon component name
-            const iconName = iconFileName.split('.')[0];
-            const componentName = upperCamelCase(iconName);
+        // Add props to the SVG code
+        iconSVGSource = addPropsToSVG(iconSVGSource, iconName);
 
-            // Generate the component code
-            const componentCode = generateComponent(componentName, iconSVGSource);
+        // Generate the component code
+        const componentCode = generateComponent(componentName, iconSVGSource);
 
-            // Export the file
-            await exportFile(componentName, componentCode, packageReactPath);
+        // Check if the component name is unique
+        await checkComponentNameUniqueness(componentName, packageReactPath);
 
-            // Add the component name to the list for the index.ts file
-            componentNames.push(componentName);
-        }),
-    );
+        // Export the file
+        await exportComponentFile(componentName, componentCode, packageReactPath);
+
+        // Add the component name to the list for the index.ts file
+        componentNames.push(componentName);
+    }
 
     // Add the index.ts file at the root of the package
     await exportIndexFile(componentNames, packageReactPath);
+
+    // Add the license file
+    await exportFile(generateLicence(), path.join(packageReactPath, `../LICENSE`),
+        true,
+    );
+
+    // Add the types file
+    await exportFile(generateTypes(), path.join(packageReactPath, `types.d.ts`),
+        true,
+    );
+
+    // Add the typescript config file
+    await exportFile(generateTypescriptConfig(), path.join(packageReactPath, `../tsconfig.json`),
+        true,
+    );
 };
 
 const getIconsList = async (iconsPath: string): Promise<string[]> => {
@@ -56,7 +74,7 @@ const getSVGSource = async (filePath: string, fileName: string): Promise<string>
     return readFileSync(path.join(filePath, fileName), 'utf8');
 };
 
-const exportFile = async (
+const exportComponentFile = async (
     componentName: string,
     componentCode: string,
     packageReactPath: string,
@@ -66,6 +84,14 @@ const exportFile = async (
         path.join(packageReactPath, 'components', `${componentName}`),
         true,
     );
+};
+
+const checkComponentNameUniqueness = async (componentName: string, packageReactPath: string) => {
+    const componentPath = path.join(packageReactPath, 'components', `${componentName}.tsx`);
+
+    if (existsSync(componentPath)) {
+        throw new Error(`The component "${componentName}" is not unique. Please rename it.`);
+    }
 };
 
 const exportIndexFile = async (icons: string[], packageReactPath: string) => {
@@ -79,17 +105,10 @@ const exportIndexFile = async (icons: string[], packageReactPath: string) => {
 const generateIndexFileContent = (icons: string[]): string => {
     let indexFileContent = '';
 
-    // Add the imports
-    icons.forEach((icon) => {
-        indexFileContent += `import { ${icon} } from './components/${icon}';\n`;
-    });
-
     // Add the exports
-    indexFileContent += `\nexport {\n`;
     icons.forEach((icon) => {
-        indexFileContent += `    ${icon},\n`;
+        indexFileContent += `export { ${icon} } from './components/${icon}';\n`;
     });
-    indexFileContent += `};\n`;
 
     return indexFileContent;
 };

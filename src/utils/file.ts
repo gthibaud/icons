@@ -46,6 +46,33 @@ export const exportTsxFile = async (
 };
 
 /**
+ * Export a file
+ * @param data file content
+ * @param outputPath Output path without extension
+ * @param overwriteIfExists If true, overwrite the file if it already exists
+ */
+export const exportFile = async (
+    data: string,
+    outputPath: string,
+    overwriteIfExists: boolean = true,
+) => {
+    // Generate file path
+    const path = outputPath;
+    const folder = getFolder(path);
+
+    // If the file already exists and we don't want to overwrite it, return
+    if (!overwriteIfExists && (await exists(path))) {
+        return;
+    }
+
+    // Check that output path exists, create it else
+    createFolderIfNotExists(folder);
+
+    // Export types to file
+    writeFileSync(path, data);
+};
+
+/**
  * Generate the "option" parameter to configure prettier using the OwlGrid prettier configuration
  * @param parser Parser to use
  * @returns Prettier config

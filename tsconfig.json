@@ -1,15 +1,25 @@
 {
     "compilerOptions": {
         "target": "es5",
+        "jsx": "react",
         "module": "commonjs",
         "declaration": true,
         "outDir": "./lib",
-        "lib": ["ES2015"],
+        "lib": [
+            "ES2015"
+        ],
         "strict": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "esModuleInterop": true,
         "resolveJsonModule": true
     },
-    "exclude": ["node_modules", "**/__tests__/*"]
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/__tests__/*",
+        "**/lib/**/*"
+    ]
 }

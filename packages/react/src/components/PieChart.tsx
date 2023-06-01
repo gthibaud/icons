@@ -1,17 +1,30 @@
-import { IconProps } from './types';
+// organize-imports-ignore
+import React, { FC } from 'react';
+import { IconProps } from './../types';
 
-export const PieChart = (props: IconProps) => {
+export const PieChart: FC<IconProps> = ({
+    size = 24,
+    width,
+    height,
+    color,
+    className,
+    style,
+    arialLabel,
+}) => {
     return (
         <svg
-            width={props.width}
-            width={props.height}
-            viewBox="0 0 20 20"
-            fill="none"
+            className={className}
+            style={{ display: 'inline', margin: '0px 3px', ...style }}
+            aria-label={arialLabel || 'pieChart icon'}
+            width={width || size}
+            height={height || size}
+            viewBox="0 0 24 24"
+            fill={color || 'inherit'}
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                d="M10.6816 8.86514L18.335 4.47157C16.6699 1.93869 13.8754 0.20464 10.6816 6.10352e-05V8.86514ZM10 20.0001C12.3466 20.0001 14.5083 19.172 16.222 17.8081L9.19182 10.9499C8.98734 10.7453 8.89971 10.57 8.89971 10.2193V0.0390284C3.91431 0.584571 0 4.83201 0 9.98545C0 15.4896 4.49854 20.0001 10 20.0001ZM17.5463 16.5222C19.0652 14.7687 20 12.4794 20 9.98545C20 8.58262 19.6982 7.25773 19.1821 6.04974L11.4021 10.5115L17.5463 16.5222Z"
-                fill={props.color}
+                d="M12.6816 10.865L20.335 6.47147C18.6699 3.9386 15.8754 2.20455 12.6816 1.99997V10.865ZM12 22C14.3466 22 16.5083 21.1719 18.222 19.8081L11.1918 12.9498C10.9873 12.7452 10.8997 12.5699 10.8997 12.2192V2.03894C5.91431 2.58448 2 6.83192 2 11.9854C2 17.4895 6.49854 22 12 22ZM19.5463 18.5221C21.0652 16.7686 22 14.4793 22 11.9854C22 10.5825 21.6982 9.25764 21.1821 8.04965L13.4021 12.5114L19.5463 18.5221Z"
+                fill="inherit"
             />
         </svg>
     );

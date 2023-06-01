@@ -1,8 +1,17 @@
 export const generateComponent = (iconName: string, svgSource: string): string => {
-    return `import React from 'react';
-import { IconProps } from './types';
+    return `// organize-imports-ignore
+    import React, { FC } from 'react';
+import { IconProps } from './../types';
 
-export const ${iconName} = (props: IconProps) => {
+export const ${iconName}: FC<IconProps> = ({
+    size = 24,
+    width,
+    height,
+    color,
+    className,
+    style,
+    arialLabel,
+}) => {
     return (
         ${svgSource}
     );

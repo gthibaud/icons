@@ -1,17 +1,30 @@
-import { IconProps } from './types';
+// organize-imports-ignore
+import React, { FC } from 'react';
+import { IconProps } from './../types';
 
-export const Plus = (props: IconProps) => {
+export const Plus: FC<IconProps> = ({
+    size = 24,
+    width,
+    height,
+    color,
+    className,
+    style,
+    arialLabel,
+}) => {
     return (
         <svg
-            width={props.width}
-            width={props.height}
-            viewBox="0 0 20 20"
-            fill="none"
+            className={className}
+            style={{ display: 'inline', margin: '0px 3px', ...style }}
+            aria-label={arialLabel || 'plus icon'}
+            width={width || size}
+            height={height || size}
+            viewBox="0 0 24 24"
+            fill={color || 'inherit'}
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                d="M9.99409 20.0001C10.8565 20.0001 11.5653 19.2775 11.5653 18.4849V11.5502H18.4525C19.2794 11.5502 20 10.8509 20 10.0001C20 9.1609 19.2794 8.44994 18.4525 8.44994H11.5653V1.51521C11.5653 0.699362 10.8565 6.10352e-05 9.99409 6.10352e-05C9.14353 6.10352e-05 8.43473 0.699362 8.43473 1.51521V8.44994H1.54755C0.744241 8.44994 0 9.1609 0 10.0001C0 10.8509 0.744241 11.5502 1.54755 11.5502H8.43473V18.4849C8.43473 19.2775 9.14353 20.0001 9.99409 20.0001Z"
-                fill={props.color}
+                d="M11.9941 22C12.8565 22 13.5653 21.2774 13.5653 20.4848V13.5501H20.4525C21.2794 13.5501 22 12.8508 22 12C22 11.1608 21.2794 10.4499 20.4525 10.4499H13.5653V3.51515C13.5653 2.6993 12.8565 2 11.9941 2C11.1435 2 10.4347 2.6993 10.4347 3.51515V10.4499H3.54755C2.74424 10.4499 2 11.1608 2 12C2 12.8508 2.74424 13.5501 3.54755 13.5501H10.4347V20.4848C10.4347 21.2774 11.1435 22 11.9941 22Z"
+                fill="inherit"
             />
         </svg>
     );
