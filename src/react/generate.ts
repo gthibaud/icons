@@ -2,7 +2,6 @@ import { existsSync, readdirSync, readFileSync } from 'fs';
 import path from 'path';
 import { cleanPath, exportFile, exportTsxFile } from '../utils/file';
 import { generateComponent } from './templates/component';
-import { exists } from 'fs-extra';
 import { generateLicence } from './templates/generateLicence';
 import { generateTypes } from './templates/types';
 import { generateTypescriptConfig } from './templates/typescript';

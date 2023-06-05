@@ -14,7 +14,7 @@ export const TikTok: FC<IconProps> = ({
     return (
         <svg
             className={className}
-            style={{ display: 'inline', margin: '0px 0.3ch', ...style }}
+            style={{ display: 'inline', margin: '0px 0.4ch 1px 0.4ch', ...style }}
             aria-label={arialLabel || 'tik-tok icon'}
             width={width || size}
             height={height || size}
