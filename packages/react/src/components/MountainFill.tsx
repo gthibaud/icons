@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 import { IconProps } from './../types';
 
-export const Edit: FC<IconProps> = ({
+export const MountainFill: FC<IconProps> = ({
     size = '1em',
     width,
     height,
@@ -15,7 +15,7 @@ export const Edit: FC<IconProps> = ({
         <svg
             className={className}
             style={{ display: 'inline', margin: '0px 0.4ch 1px 0.4ch', ...style }}
-            aria-label={arialLabel || 'edit icon'}
+            aria-label={arialLabel || 'mountain-fill icon'}
             width={width || size}
             height={height || size}
             viewBox="0 0 24 24"
@@ -23,7 +23,7 @@ export const Edit: FC<IconProps> = ({
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                d="M19.2809 7.09288L20.5369 5.83673C21.1367 5.23678 21.1555 4.53371 20.5837 3.95251L20.0495 3.4088C19.4777 2.8276 18.756 2.88384 18.1562 3.46504L16.9002 4.71182L19.2809 7.09288ZM6.40256 19.9731L18.1093 8.24592L15.738 5.87423L4.03122 17.5921L3.03769 20.2075C2.85961 20.6856 3.347 21.1262 3.77815 20.9668L6.40256 19.9731Z"
+                d="M12 3C11.5385 3 11.3846 3.30909 11.0769 3.61818L2.15385 18.3C2 18.4545 2 18.7636 2 18.9182C2 19.6909 2.61538 20 3.07692 20H20.9231C21.5385 20 22 19.6909 22 18.9182C22 18.6091 22 18.6091 21.8462 18.3L13.0769 3.61818C12.7692 3.30909 12.4615 3 12 3ZM12 5.31818L17.0769 13.8182H15.8462L13.5385 11.5L12 13.8182L10.4615 11.5L8.15385 13.8182H6.76923L12 5.31818Z"
                 fill="inherit"
             />
         </svg>
