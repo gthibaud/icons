@@ -41,6 +41,7 @@ export { CubeMedium } from './components/CubeMedium';
 export { DayNight } from './components/DayNight';
 export { Edit } from './components/Edit';
 export { Email } from './components/Email';
+export { EmailFill } from './components/EmailFill';
 export { Export } from './components/Export';
 export { Eye } from './components/Eye';
 export { EyeBold } from './components/EyeBold';
