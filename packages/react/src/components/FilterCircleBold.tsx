@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 import { IconProps } from './../types';
 
-export const FilterCircle: FC<IconProps> = ({
+export const FilterCircleBold: FC<IconProps> = ({
     size = '1em',
     width,
     height,
@@ -15,7 +15,7 @@ export const FilterCircle: FC<IconProps> = ({
         <svg
             className={className}
             style={{ display: 'inline', margin: '0px 0.4ch 1px 0.4ch', ...style }}
-            aria-label={arialLabel || 'filter-circle icon'}
+            aria-label={arialLabel || 'filter-circle-bold icon'}
             width={width || size}
             height={height || size}
             viewBox="0 0 24 24"
