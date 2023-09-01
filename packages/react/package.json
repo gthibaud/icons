@@ -1,6 +1,6 @@
 {
     "name": "gthibaud-icons-react",
-    "version": "0.0.48",
+    "version": "0.0.52",
     "description": "Grégoire's React icons.",
     "main": "./lib/index.js",
     "repository": "git@github.com:gthibaud/icons.git",
